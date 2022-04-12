@@ -24,6 +24,7 @@ public class TP1 {
             //...and passing `frame` instead of `null` as first parameter
             Object selectionObject = JOptionPane.showInputDialog(frame, "Escolha uma opção ou 'Sair'", "Menu", JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 
+            //pegando qual a posição do item escolhido
             for (int i = 0; i < options.length; i++) {
                 if (options[i].equals(selectionObject)) {
                     op = i;
@@ -34,8 +35,16 @@ public class TP1 {
             int x, y;
             switch (op) {
                 case 0:
+                    x = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o valor do primeiro numero: ", null, 1));
+                    y = Integer.parseInt(JOptionPane.showInputDialog(null, "Agora, digite o valor do segundo: ", null, 1));
+                    soma(x, y);
+                    JOptionPane.showMessageDialog(null, "O resultado da soma foi: " + memoriaDados[0] + "   ", null, 1);
                     break;
                 case 1:
+                    x = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o valor do primeiro numero: ", null, 1));
+                    y = Integer.parseInt(JOptionPane.showInputDialog(null, "Agora, digite o valor do segundo: ", null, 1));
+                    subtracao(x, y);
+                    JOptionPane.showMessageDialog(null, "O resultado da subtração foi: " + memoriaDados[2] + "   ", null, 1);
                     break;
                 case 2:
                     x = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o valor do divisor: ", null, 1));
@@ -198,7 +207,6 @@ public class TP1 {
         umaInstrucao[2] = 0;
         umaInstrucao[3] = -1;
         memoriaInstrucoes[0] = umaInstrucao;
-        //memoriaDados[0] = divisor
 
         umaInstrucao = new int[4];
         umaInstrucao[0] = 2;
@@ -206,7 +214,6 @@ public class TP1 {
         umaInstrucao[2] = 1;
         umaInstrucao[3] = -1;
         memoriaInstrucoes[1] = umaInstrucao;
-        //memoriaDados[1] = dividendo
 
         umaInstrucao = new int[4];
         umaInstrucao[0] = 2;
@@ -214,8 +221,6 @@ public class TP1 {
         umaInstrucao[2] = 2;
         umaInstrucao[3] = -1;
         memoriaInstrucoes[2] = umaInstrucao;
-        //memoriaDados[2] = 1
-        //representa uma vari�vel de incremento
 
         umaInstrucao = new int[4];
         umaInstrucao[0] = 2;
@@ -223,9 +228,7 @@ public class TP1 {
         umaInstrucao[2] = 3;
         umaInstrucao[3] = -1;
         memoriaInstrucoes[3] = umaInstrucao;
-        //memoriaDados[3] = 0
-        //representa quantas subtra��es foram feitas
-        //representa o resultado da divis�o
+      
 
         umaInstrucao = new int[4];
         umaInstrucao[0] = -1;
@@ -236,7 +239,6 @@ public class TP1 {
 
         maquina();
 
-        //trazer da memoriaDados[0]
         umaInstrucao = new int[4];
         umaInstrucao[0] = 3;
         umaInstrucao[1] = -1;
@@ -289,7 +291,6 @@ public class TP1 {
             maquinaInterpretada(umaInstrucao);
             ram1 = umaInstrucao[1];
         }
-
     }
 
     void potencia(int base, int expoente) {
@@ -306,7 +307,6 @@ public class TP1 {
         umaInstrucao[2] = 4;
         umaInstrucao[3] = -1;
         maquinaInterpretada(umaInstrucao);
-
     }
 
     void raizQuadrada(int valor) {
@@ -335,7 +335,6 @@ public class TP1 {
         umaInstrucao[2] = 5;
         umaInstrucao[3] = -1;
         maquinaInterpretada(umaInstrucao);
-
     }
 
     void fatorial(int valor) {
@@ -369,7 +368,6 @@ public class TP1 {
             //multiplicando
             multiplicacao(result, memoriaDados[3]);
             result = memoriaDados[1];
-
         }
 
         //levando resultado pra memoria de dados
@@ -379,7 +377,6 @@ public class TP1 {
         umaInstrucao[2] = 6;
         umaInstrucao[3] = -1;
         maquinaInterpretada(umaInstrucao);
-
     }
 
     void log(int valor, int base) {
@@ -404,4 +401,53 @@ public class TP1 {
         maquinaInterpretada(umaInstrucao);
     }
 
+    private void soma(int x, int y) {
+        //levando valores pra memória de dados
+        int[] umaInstrucao = new int[4];
+        umaInstrucao[0] = 2;
+        umaInstrucao[1] = x;
+        umaInstrucao[2] = 0;
+        umaInstrucao[3] = -1;
+        maquinaInterpretada(umaInstrucao);
+
+        umaInstrucao = new int[4];
+        umaInstrucao[0] = 2;
+        umaInstrucao[1] = y;
+        umaInstrucao[2] = 1;
+        umaInstrucao[3] = -1;
+        maquinaInterpretada(umaInstrucao);
+
+        //realizando a soma
+        umaInstrucao = new int[4];
+        umaInstrucao[0] = 0;
+        umaInstrucao[1] = 0;
+        umaInstrucao[2] = 1;
+        umaInstrucao[3] = 0;
+        maquinaInterpretada(umaInstrucao);
+    }
+
+    private void subtracao(int x, int y) {
+        //levando valores pra memória de dados
+        int[] umaInstrucao = new int[4];
+        umaInstrucao[0] = 2;
+        umaInstrucao[1] = x;
+        umaInstrucao[2] = 0;
+        umaInstrucao[3] = -1;
+        maquinaInterpretada(umaInstrucao);
+
+        umaInstrucao = new int[4];
+        umaInstrucao[0] = 2;
+        umaInstrucao[1] = y;
+        umaInstrucao[2] = 1;
+        umaInstrucao[3] = -1;
+        maquinaInterpretada(umaInstrucao);
+
+        //realizando a subtração
+        umaInstrucao = new int[4];
+        umaInstrucao[0] = 1;
+        umaInstrucao[1] = 0;
+        umaInstrucao[2] = 1;
+        umaInstrucao[3] = 2;
+        maquinaInterpretada(umaInstrucao);
+    }
 }
