@@ -317,7 +317,8 @@ public class TP1 {
             if (valor % divisor == 0) {
                 divisao(valor, divisor);
                 valor = memoriaDados[3];
-                cont++;
+                soma(cont, 1);
+                cont = memoriaDado[0];
                 if (cont == 2) {
                     result *= divisor;
                     cont = 0;
@@ -386,9 +387,11 @@ public class TP1 {
             potencia(base, i);
             if (memoriaDados[4] == valor) {
                 result = i;
-                i = -10;
+                subtracao(i, 10);
+                i = memoriaDados[2];
             } else {
-                i++;
+                soma(i,1);
+                i = memoriaDados[0];
             }
         } while (i > 0);
 
